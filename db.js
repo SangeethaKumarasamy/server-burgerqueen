@@ -10,7 +10,7 @@ mongoose.connect(MONGO_URL, {
 var db = mongoose.connection;
 
 db.on("connected", () => {
-  console.log("MongoDb Connected!!");gffhjhgcxvb
+  console.log("MongoDb Connected!!");
 });
 
 db.on("error", () => {
