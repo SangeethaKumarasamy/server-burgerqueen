@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { v4: uuidv4 } = require("uuid");
+const { uuid } = require("uuidv4");
 const stripe = require("stripe")(
   "sk_test_51KapTVSFyJXvMzrW9ppzEgmtiOTVqvwrk81QS3GVSqgbqe2P7oY5HHvdIKxOnZkQUMl9TSMQurlyBDq72IN8C5vF00vdudQzpq"
 );
@@ -20,7 +20,7 @@ router.post("/placeorder", async (req, res) => {
         receipt_email: token.email,
       },
       {
-        idempotencyKey: uuidv4(),
+        idempotencyKey: uuid(),
       }
     );
     if (payment) {
@@ -29,7 +29,7 @@ router.post("/placeorder", async (req, res) => {
       res.send("Payment Failed !!");
     }
   } catch (error) {
-    return res.status(400).json({ message: "Something went wrong !!" });
+    return res.status(400).json({ message: "Something went wrong !!", error });
   }
 });
 module.exports = router;
