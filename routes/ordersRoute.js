@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { uuid } = require("uuidv4");
+const { uuid } = require("uuid");
 const stripe = require("stripe")(
   "sk_test_51KapTVSFyJXvMzrW9ppzEgmtiOTVqvwrk81QS3GVSqgbqe2P7oY5HHvdIKxOnZkQUMl9TSMQurlyBDq72IN8C5vF00vdudQzpq"
 );
