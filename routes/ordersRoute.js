@@ -28,7 +28,7 @@ router.post("/placeorder", async (req, res) => {
     } else {
       res.send("Payment Failed !!");
     }
-  } catch (err) {
+  } catch (error) {
     return res.status(400).json({ message: "Something went wrong !!" ,error });
   }
 });
