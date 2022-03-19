@@ -29,7 +29,7 @@ router.post("/placeorder", async (req, res) => {
       res.send("Payment Failed !!");
     }
   } catch (error) {
-    return res.status(400).json({ message: "Something went wrong !!", error });
+    return res.status(400).json({ message: "Something went wrong !!"+ error });
   }
 });
 module.exports = router;
