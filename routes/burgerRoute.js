@@ -11,7 +11,7 @@ router.get("/getallburgers", async (req, res) => {
   }
 });
 
-router.post("/addBurger", async (req, res) => {
+router.post("/addburger", async (req, res) => {
   const burger = req.body.burger;
   try {
     const newBurger = new Burger({
