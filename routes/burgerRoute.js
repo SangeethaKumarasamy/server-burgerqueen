@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Burger = require("../Models/burgerModel");
 
-router.get("/getallburgers", async(req, res) => {
+router.get("/getallburgers", async (req, res) => {
   try {
     const burgers = await Burger.find({});
     res.send(burgers);
@@ -11,4 +11,22 @@ router.get("/getallburgers", async(req, res) => {
   }
 });
 
-module.exports=router;
+router.post("/addBurger", async (req, res) => {
+  const burger = req.body.burger;
+  try {
+    const newBurger = new Burger({
+      name: burger.name,
+      variants: ["Quarter", "Double", "Big_Mac"],
+      image: burger.image,
+      description: burger.description,
+      category: burger.category,
+      prices: [burger.prices],
+    });
+    await newBurger.save();
+    res.send("New burger added successfully !!");
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
+module.exports = router;
