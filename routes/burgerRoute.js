@@ -29,4 +29,14 @@ router.post("/addburger", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  const burgerid = req.body.burgerid;
+  try {
+    const burger = await Burger.findOne({ _id: burgerid });
+    res.send(burger);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
 module.exports = router;
