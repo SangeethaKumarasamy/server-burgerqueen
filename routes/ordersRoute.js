@@ -52,11 +52,31 @@ router.post("/placeorder", async (req, res) => {
 router.post("/getuserorders", async (req, res) => {
   const { userid } = req.body;
   try {
-    const orders = await Order.find({ userid: userid }).sort({_id:-1});
+    const orders = await Order.find({ userid: userid }).sort({ _id: -1 });
     res.send(orders);
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong" });
   }
 });
 
+router.get("/getallorders", async (req, res) => {
+  try {
+    const orders = await Order.find({});
+    res.send(orders);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
+router.post("/deliverorder", async (req, res) => {
+  const orderid = req.body.orderid;
+  try {
+    const order = await Order.findOne({ _id: orderid });
+    order.isDelivered = true;
+    await order.save();
+    res.send("Order is delivered successfully !!");
+  } catch (error) {
+    return res.status(400).json({ message: "Something went wrong !!" });
+  }
+});
 module.exports = router;

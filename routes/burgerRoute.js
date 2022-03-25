@@ -29,14 +29,44 @@ router.post("/addburger", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/getburgerbyid", async (req, res) => {
   const burgerid = req.body.burgerid;
   try {
-    const burger = await Burger.findOne({ _id: burgerid });
+    // const burger = await Burger.findOne({_.id:burgerid });
+
+    const burger = await Burger.findById({ burgerid });
     res.send(burger);
   } catch (error) {
     return res.status(400).json({ message: error });
   }
 });
+
+router.post("/editburger", async (req, res) => {
+  const editedburger = req.body.editedburger;
+  try {
+    const burger = await Burger.findById({ _id: editedburger._id });
+    burger.name = editedburger.name;
+    burger.description = editedburger.description;
+    burger.image = editedburger.image;
+    burger.category = editedburger.category;
+    burger.prices = [editedburger.prices];
+
+    await burger.save();
+    res.send("Burger is edited successfully !!");
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
+router.post("/deletepizza", async (req, res) => {
+  const burgerid = req.body.burgerid;
+  try {
+    await Burger.findOneAndDelete({ _id: burgerid });
+    res.send("Burger is deleted successfully !!");
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
 
 module.exports = router;
