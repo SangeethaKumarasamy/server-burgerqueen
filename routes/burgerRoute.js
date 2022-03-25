@@ -32,9 +32,10 @@ router.post("/addburger", async (req, res) => {
 router.post("/getburgerbyid", async (req, res) => {
   const burgerid = req.body.burgerid;
   try {
-    // const burger = await Burger.findOne({_.id:burgerid });
-
-    const burger = await Burger.findById({ burgerid });
+    // const burger = await Burger.findOne({_id:Object(burgerid) });
+    console.log(burgerid);
+    console.log(req.body);
+    const burger = await Burger.findById(burgerid);
     res.send(burger);
   } catch (error) {
     return res.status(400).json({ message: error });
@@ -67,6 +68,5 @@ router.post("/deletepizza", async (req, res) => {
     return res.status(400).json({ message: error });
   }
 });
-
 
 module.exports = router;
