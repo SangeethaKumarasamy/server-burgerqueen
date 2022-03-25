@@ -4,7 +4,17 @@ const Burger = require("./Models/burgerModel");
 
 const db = require("./db.js");
 
+//Paytm part//
+const qs = require("querystring");
 const app = express();
+const parseUrl = express.urlencoded({ extended: false });
+const parseJson = express.json({ extended: false });
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
+//*** //
+
 
 app.use(express.json());
 
