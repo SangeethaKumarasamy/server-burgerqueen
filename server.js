@@ -20,6 +20,8 @@ app.get("/", (req, res) => {
 
 app.use(express.json());
 
+const path = require('path')
+
 const burgerRoute = require("./routes/burgerRoute");
 
 const userRoute = require("./routes/userRoute");

@@ -45,7 +45,7 @@ router.post("/getburgerbyid", async (req, res) => {
 router.post("/editburger", async (req, res) => {
   const editedburger = req.body.editedburger;
   try {
-    const burger = await Burger.findById({ _id: editedburger._id });
+    const burger = await Burger.findOne({ _id: editedburger._id });
     burger.name = editedburger.name;
     burger.description = editedburger.description;
     burger.image = editedburger.image;
