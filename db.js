@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-var MONGO_URL = process.env.DB_URL;
+var MONGO_URL =
+  "mongodb+srv://sangeetha:sangeetha123@cluster0.kl6wa.mongodb.net/burger";
 
 mongoose.connect(MONGO_URL, {
   useUnifiedTopology: true,
