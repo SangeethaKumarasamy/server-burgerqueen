@@ -7,7 +7,8 @@ const orderSchema = mongoose.Schema(
     orderItems: [],
     shippingAddress: { type: Object },
     orderAmount: { type: Number, require },
-    isDelivered: { type: Boolean, require ,default: false }
+    isDelivered: { type: Boolean, require ,default: false },
+    orderStatus:{type: String, require,default:"PENDING"} // "PENDING,ACCEPTED,DELIVERED"
   },
   {
     timestamps: true,
