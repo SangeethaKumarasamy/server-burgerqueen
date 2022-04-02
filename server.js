@@ -16,7 +16,7 @@ const checksum_lib = require("./Paytm/checksum");
 const config = require("./Paytm/config");
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.send("Server is working !!");
 });
 
 app.use(express.json());
