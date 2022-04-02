@@ -150,7 +150,7 @@ app.post("/callback", (req, res) => {
             } else {
               // res.send("payment failed");
               // window.alert("payment failed");
-              res.redirect("http://localhost:3000/payment/?status=false");
+              res.redirect(`http://localhost:3000/payment/?status=false&amount=${amount}`);
             }
           });
         });
