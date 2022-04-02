@@ -5,7 +5,9 @@ const Order = require("../Models/orderModel");
 
 router.post("/placeorder", async (req, res) => {
   const { subtotal, currentUser, cartItems } = req.body;
-  try {
+  const {status}=req.query;
+  if(status){
+    try {
       const newOrder = new Order({
         name: currentUser.name,
         email: currentUser.email,
@@ -24,7 +26,13 @@ router.post("/placeorder", async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong !!" + error });
   }
+
+  }else{
+    res.status(400).json({ message: "Something went wrong !!" });
+  
+  }
 });
+
 
 router.post("/getuserorders", async (req, res) => {
   const { userid } = req.body;
