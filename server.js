@@ -48,7 +48,7 @@ app.post("/paynow", [parseUrl, parseJson], (req, res) => {
     params["TXN_AMOUNT"] = paymentDetails.amount;
     params[
       "CALLBACK_URL"
-    ] = `http://localhost:7000/callback/?amount=${paymentDetails.amount}`;
+    ] = `https://burgerqueen-vs.herokuapp.com/callback/?amount=${paymentDetails.amount}`;
     params["EMAIL"] = paymentDetails.customerEmail;
     params["MOBILE_NO"] = paymentDetails.customerPhone;
     // params["REFUND"]=paymentDetails.amount;
