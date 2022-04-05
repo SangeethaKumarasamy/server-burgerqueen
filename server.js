@@ -146,11 +146,11 @@ app.post("/callback", (req, res) => {
             if (_result.STATUS == "TXN_SUCCESS") {
               //  res.send("payment success");
               // window.alert("payment success");
-              res.redirect(`http://localhost:3000/payment/?status=true&amount=${amount}`);
+              res.redirect(`https://burgerqueen-vs.netlify.app/payment/?status=true&amount=${amount}`);
             } else {
               // res.send("payment failed");
               // window.alert("payment failed");
-              res.redirect(`http://localhost:3000/payment/?status=false&amount=${amount}`);
+              res.redirect(`https://burgerqueen-vs.netlify.app/payment/?status=false&amount=${amount}`);
             }
           });
         });
